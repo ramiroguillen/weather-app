@@ -27,18 +27,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    borderWidth: 5,
-    backgroundColor: 'pink'
+    borderWidth: 1,
+    borderRadius: 10,
+    backgroundColor: 'rgba(255,255,255,0.4)'
   },
   dateTextWrapper: {
     flexDirection: 'column'
   },
   date: {
-    color: 'white',
+    color: 'black',
     fontSize: 15
   },
   temp: {
-    color: 'white',
+    color: 'black',
     fontSize: 20
   }
 })

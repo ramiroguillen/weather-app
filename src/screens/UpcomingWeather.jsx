@@ -6,9 +6,11 @@ import {
   StyleSheet,
   ImageBackground
 } from 'react-native'
+import { weatherType } from '../utils/weatherType'
 import ListItem from '../components/ListItem'
 
 const UpcomingWeather = ({ weatherData }) => {
+  const weatherCondition = weatherData[0].weather[0].main
   const renderItem = ({ item }) => (
     <ListItem
       condition={item.weather[0]?.main}
@@ -21,7 +23,7 @@ const UpcomingWeather = ({ weatherData }) => {
   return (
     <SafeAreaView style={container}>
       <ImageBackground
-        source={require('../../assets/clouds.jpg')}
+        source={weatherType[weatherCondition].imageSource}
         style={image}
       >
         <FlatList

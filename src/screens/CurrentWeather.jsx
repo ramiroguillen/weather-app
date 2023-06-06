@@ -21,13 +21,11 @@ const CurrentWeather = ({ weatherData }) => {
   const {
     wrapper,
     container,
+    card,
     tempStyles,
     feels,
     highLowWrapper,
-    highLow,
-    bodyWrapper,
-    description,
-    message
+    highLow
   } = styles
 
   return (
@@ -37,28 +35,23 @@ const CurrentWeather = ({ weatherData }) => {
         source={weatherType[weatherCondition].imageSource}
       >
         <View style={container}>
-          <Feather
-            name={weatherType[weatherCondition].icon}
-            size={100}
-            color="white"
-          />
-          <Text style={tempStyles}>{`${temp}°`}</Text>
-          <Text style={feels}>{`Feels like: ${feels_like}°`}</Text>
-          <RowText
-            messageOne={`High: ${temp_max}° `}
-            messageTwo={`Low: ${temp_min}°`}
-            container={highLowWrapper}
-            messageOneStyles={highLow}
-            messageTwoStyles={highLow}
-          />
+          <View style={card}>
+            <Feather
+              name={weatherType[weatherCondition].icon}
+              size={100}
+              color="black"
+            />
+            <Text style={tempStyles}>{`${temp}°`}</Text>
+            <Text style={feels}>{`Feels like: ${feels_like}°`}</Text>
+            <RowText
+              messageOne={`High: ${temp_max}° `}
+              messageTwo={`Low: ${temp_min}°`}
+              container={highLowWrapper}
+              messageOneStyles={highLow}
+              messageTwoStyles={highLow}
+            />
+          </View>
         </View>
-        <RowText
-          messageOne={weather[0].description}
-          messageTwo={weatherType[weatherCondition].message}
-          container={bodyWrapper}
-          messageOneStyles={description}
-          messageTwoStyles={message}
-        />
       </ImageBackground>
     </SafeAreaView>
   )
@@ -73,18 +66,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  card: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding:50,
+    backgroundColor: 'rgba(255,255,255,0.4)',
+    borderRadius:10,
+    borderWidth:1
+  },
+
   tempStyles: { color: 'black', fontSize: 48 },
   feels: { color: 'black', fontSize: 30 },
   highLowWrapper: { flexDirection: 'row' },
   highLow: { color: 'black', fontSize: 20 },
-  bodyWrapper: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-start',
-    paddingLeft: 25,
-    marginBottom: 40
-  },
-  description: { fontSize: 48 },
-  message: { fontSize: 30 }
 })
 
 export default CurrentWeather
